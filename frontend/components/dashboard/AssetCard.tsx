@@ -30,14 +30,21 @@ export const AssetCard = ({
   };
 
   return (
-    <Card className="p-4 border-border/20 bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-colors flex flex-col justify-between">
+    <Card className="p-4 border border-neutral-700/60 bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-colors flex flex-col justify-between shadow-sm">
       <div className="mb-4">
         <div className="flex items-start justify-between mb-2">
           <div>
             <p className="text-lg font-bold text-foreground">{asset.symbol}</p>
             <p className="text-sm text-muted-foreground">{asset.name}</p>
           </div>
-          <Badge variant={asset.type === 'CRYPTO' ? 'default' : 'secondary'}>
+          <Badge 
+            variant="outline"
+            className={
+              asset.type === 'CRYPTO' 
+                ? 'bg-amber-500/10 text-amber-500 border-amber-500/30'
+                : 'bg-blue-500/10 text-blue-400 border-blue-500/30'
+            }
+          >
             {asset.type}
           </Badge>
         </div>
@@ -46,12 +53,11 @@ export const AssetCard = ({
       <Button
         onClick={handleClick}
         disabled={isLoading}
-        variant={isTracked ? 'outline' : 'default'}
         size="sm"
-        className={`w-full ${
+        className={`w-full transition-colors font-medium shadow-sm ${
           isTracked
-            ? 'border-accent text-accent'
-            : 'bg-accent hover:bg-accent/90 text-accent-foreground'
+            ? 'bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:shadow-[0_0_15px_rgba(16,185,129,0.15)]'
+            : 'bg-violet-500 hover:bg-violet-400 text-white border-none shadow-[0_0_15px_rgba(139,92,246,0.15)]'
         }`}
       >
         {isLoading ? (

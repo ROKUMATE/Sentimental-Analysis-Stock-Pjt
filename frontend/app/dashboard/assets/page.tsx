@@ -100,7 +100,7 @@ export default function AssetsPage() {
             {trackedAssets.map((pref) => (
               <div
                 key={pref.id}
-                className="p-3 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-between"
+                className="p-3 rounded-lg bg-neutral-800/60 border border-neutral-700 flex items-center justify-between shadow-md hover:bg-neutral-800 transition-colors"
               >
                 <span className="font-medium text-foreground">
                   {pref.asset.symbol}

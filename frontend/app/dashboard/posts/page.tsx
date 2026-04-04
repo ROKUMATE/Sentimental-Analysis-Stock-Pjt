@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useFetch } from '@/hooks/useFetch';
 import { postsAPI, assetsAPI } from '@/lib/api';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import {
@@ -39,8 +38,9 @@ export default function PostsPage() {
   const hasFilters = selectedAsset !== ALL_ASSETS || selectedSource !== ALL_SOURCES;
 
   return (
-    <div className="p-6 space-y-6">
-      <div>
+    <div className="p-6 space-y-0">
+      {/* Header */}
+      <div className="pb-6 border-b-2 border-border/60">
         <h1 className="text-3xl font-bold text-foreground mb-2">Market Posts</h1>
         <p className="text-muted-foreground">
           Real-time sentiment data from Twitter and Reddit.
@@ -48,7 +48,7 @@ export default function PostsPage() {
       </div>
 
       {/* Filters */}
-      <Card className="p-6 border-border/20 bg-card/50 backdrop-blur-sm">
+      <div className="py-6 border-b-2 border-border/60">
         <div className="flex items-center gap-4 flex-wrap">
           <div className="flex items-center gap-2">
             <Filter className="h-4 w-4 text-muted-foreground" />
@@ -94,10 +94,11 @@ export default function PostsPage() {
             </Button>
           )}
         </div>
-      </Card>
+      </div>
 
       {/* Posts Feed */}
       <PostsFeed posts={posts ?? undefined} loading={postsLoading} />
     </div>
   );
 }
+
